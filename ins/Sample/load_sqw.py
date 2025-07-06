@@ -9,7 +9,9 @@ import os
 import seaborn as sns
 from constants import *
 from functions import get2theta,readtxtfile
-import sqw_plotting,Aqw_plotting,intQ,plotdos,plot_spectral_C
+import sqw_plotting,Aqw_plotting,intQ,\
+plotdos,plot_spectral_C,cal_scattering_phase_space,\
+plot_scatt_phase_space
 
 class sqw:
     def __init__(self,wavelength,data_dir='.'):
@@ -65,6 +67,7 @@ class sqw:
         self.all_gdos = []
         self.all_energy = []
         self.all_scaling = []
+        self.vol = vol
         if file_index_input is None:
             file_index = range(self.nfiles)
         else:
@@ -113,6 +116,30 @@ class sqw:
         os.makedirs(save_dir, exist_ok=True)
         plot_spectral_C.plot_spectral_C(np.array(self.all_energy)[file_index],np.array(self.all_gdos)[file_index],np.array(self.all_temperature)[file_index])
         plt.savefig(os.path.join(save_dir, 'spectral_C_T.png'), dpi=300)
+    
+    def plot_scattering_phase_space(self,save_dir='saved_figures',file_index_input=None):
+        if file_index_input is None:
+            file_index = [i for i in range(self.nfiles) if self.int_dos[i] != 0]
+        else:
+            file_index = file_index_input
+        # make the save directory if it does not exist
+        file_index = np.array(file_index)
+        os.makedirs(save_dir, exist_ok=True)
+        self.sp1 = []
+        self.sp2 = []
+        temperatures = []
+        xs = []
+        sig = 0.025
+        for i in file_index:
+            y = self.all_gdos[i]/meV2thz*self.vol[i]*1e-30
+            x = self.all_energy[i]*meV2thz 
+            sp1,sp2 = cal_scattering_phase_space.get_scatt_phase_space(y,x,sig,self.all_temperature[i])
+            self.sp1.append(sp1)
+            self.sp2.append(sp2)
+            temperatures.append(self.all_temperature[i])
+            xs.append(x)
+        plot_scatt_phase_space.plot_scatt_phase_space(np.array(xs), np.array(self.sp1),np.array(self.sp2), np.array(temperatures))
+        plt.savefig(os.path.join(save_dir, 'phonon_scatt_phase_space.png'), dpi=300)
         
         
 sqw_instance = sqw(4.69,'data') # neutron wavelength and data directory 
@@ -126,5 +153,6 @@ sqw_instance.get_gdos(vol,natom)  # Calculate the integrated generalized density
 sqw_instance.plot_aqw()  # Plot weighted S(q,w), denoted as A(q,w)
 sqw_instance.plot_gdos()  # Plot the generalized density of states
 sqw_instance.plot_spectral_C()  # Plot the spectral specific heat
+sqw_instance.plot_scattering_phase_space()  # Plot the three-phonon scattering phase space (only considering energy conservation)
 plt.show()
 

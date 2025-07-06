@@ -1,6 +1,6 @@
 import numpy as np
 import scipy
-from constants import meV, kB
+from constants import meV, kB, hbar
 import warnings
 from scipy.optimize import OptimizeWarning
 # Suppress only the OptimizeWarning
@@ -91,3 +91,7 @@ def getCE(T,energy,dos):
     intg[1:] = E[1:]**2/kB/T**2*np.exp(E[1:]/kB/T)/(np.exp(E[1:]/kB/T)-1)**2*dos[1:] 
     intg[0] = 0
     return intg
+def de(x,T):
+    return 1/(np.exp(hbar*x*2*np.pi*1e12/kB/T)-1)
+def deltag(x, sig):
+    return np.exp(-x**2 / (2 * sig**2))  / np.sqrt(2*np.pi*sig**2)
