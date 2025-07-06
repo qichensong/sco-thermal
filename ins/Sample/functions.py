@@ -1,5 +1,6 @@
 import numpy as np
 import scipy
+from constants import meV, kB
 import warnings
 from scipy.optimize import OptimizeWarning
 # Suppress only the OptimizeWarning
@@ -83,3 +84,10 @@ def readtxtfile(filename):
             elastic[j,:] = popt[:] 
             data_sub[j,:] = data[j,:]-gaussian(x,*popt)
     return data, data_e, elastic, x, y
+# calculate the spectral specific heat 
+def getCE(T,energy,dos):
+    E = energy*meV
+    intg = np.zeros(E.shape)
+    intg[1:] = E[1:]**2/kB/T**2*np.exp(E[1:]/kB/T)/(np.exp(E[1:]/kB/T)-1)**2*dos[1:] 
+    intg[0] = 0
+    return intg

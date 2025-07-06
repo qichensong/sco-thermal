@@ -28,7 +28,7 @@ def intQ(file_index,datai,data_ei,q,w,T,Vol,natom):
     gdos = np.append(dos[idx],0.0)
     gdos = np.flip(gdos)
     N0 = natom * 3 / Vol/ 1e-30
-    # The signal above 39.5 meV is weak and contains non-phonon contributions
+    # The signal above 39.5 meV becomes weaker as energy increases and can contain non-phonon contributions
     idx_local = np.where(energy<39.5/meV2thz)[0]
     area = np.trapz(gdos[idx_local],energy[idx_local])
     gdos = gdos/area*N0

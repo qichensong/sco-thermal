@@ -9,7 +9,7 @@ import os
 import seaborn as sns
 from constants import *
 from functions import get2theta,readtxtfile
-import sqw_plotting,Aqw_plotting,intQ
+import sqw_plotting,Aqw_plotting,intQ,plotdos,plot_spectral_C
 
 class sqw:
     def __init__(self,wavelength,data_dir='.'):
@@ -91,8 +91,31 @@ class sqw:
                 Aqw_plotting.Aqw_plotting(i,self.all_data[i],self.all_x[i],self.all_y[i],self.all_scaling[i],self.all_temperature[i])
                 plt.savefig(os.path.join(save_dir, f'Aqw_{self.all_temperature[i]}K.png'), dpi=300)
                 plt.close()
+    
+    def plot_gdos(self,save_dir='saved_figures',file_index_input=None):
+        if file_index_input is None:
+            file_index = [i for i in range(self.nfiles) if self.int_dos[i] != 0]
+        else:
+            file_index = file_index_input
+        # make the save directory if it does not exist
+        file_index = np.array(file_index)
+        os.makedirs(save_dir, exist_ok=True)
+        plotdos.plotdos(np.array(self.all_energy)[file_index],np.array(self.all_gdos)[file_index],np.array(self.all_temperature)[file_index])
+        plt.savefig(os.path.join(save_dir, 'gdos_T.png'), dpi=300)
+    
+    def plot_spectral_C(self,save_dir='saved_figures',file_index_input=None):
+        if file_index_input is None:
+            file_index = [i for i in range(self.nfiles) if self.int_dos[i] != 0]
+        else:
+            file_index = file_index_input
+        # make the save directory if it does not exist
+        file_index = np.array(file_index)
+        os.makedirs(save_dir, exist_ok=True)
+        plot_spectral_C.plot_spectral_C(np.array(self.all_energy)[file_index],np.array(self.all_gdos)[file_index],np.array(self.all_temperature)[file_index])
+        plt.savefig(os.path.join(save_dir, 'spectral_C_T.png'), dpi=300)
         
-sqw_instance = sqw(4.69,'data') 
+        
+sqw_instance = sqw(4.69,'data') # neutron wavelength and data directory 
 #sqw_instance.read_data(0)  # Read the first file
 sqw_instance.read_all_data([250,300,350,375,400])  # Read all files
 sqw_instance.plot_sqw()  # Plot S(q,w)
@@ -101,5 +124,7 @@ vol = np.array([2063.284144, 2074.812745, 2175.979671, 2178.346967, 2178.346967]
 natom = 188
 sqw_instance.get_gdos(vol,natom)  # Calculate the integrated generalized density of states
 sqw_instance.plot_aqw()  # Plot weighted S(q,w), denoted as A(q,w)
+sqw_instance.plot_gdos()  # Plot the generalized density of states
+sqw_instance.plot_spectral_C()  # Plot the spectral specific heat
 plt.show()
 
