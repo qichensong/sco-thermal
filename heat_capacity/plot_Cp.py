@@ -23,6 +23,7 @@ plt.rcParams.update({'font.size': 15})
 font = {'family' : 'Arial'}
 matplotlib.rc('font', **font)
 
+# density of Fe[HB(tz)3]2
 rhoT = np.array([[-173.15,1.58131],
 [-123.15,1.57648],
 [-73.15,1.57128],
