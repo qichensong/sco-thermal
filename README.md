@@ -59,4 +59,13 @@ This repository contains ready-to-use **Python scripts** for comprehensive analy
    ```bash
    python load_sqw.py
    ```
+
+## 📬 Contact
+
+For questions and suggestions, please contact:
+
+- **Qichen Song**  
+qichensong42@gmail.com  
+
+or open an issue on this repository.
    
