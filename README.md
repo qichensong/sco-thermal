@@ -49,7 +49,7 @@ This repository contains ready-to-use **Python scripts** for comprehensive analy
 2. **Install dependencies**  
    ```bash
    pip install -r requirements.txt
-3. **Run the Python script in the folder for different measurements**
+3. **Run the executable Python script (marked by 🟢) in the folder for different measurements**
 
    For example, to run the analysis for neutron rcattering data, navigate to the `ins/Sample` folder 
     ```bash
