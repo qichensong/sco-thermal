@@ -9,7 +9,7 @@ This repository contains ready-to-use **Python scripts** for comprehensive analy
 - Flexible, customizable plotting styles
 - Analysis across diverse experimental techniques
 
-<img src="./dftb_ph/LS_mode_3.gif" style="max-width:60%; height:auto; margin-left:30px;"><br>
+<img src="./dftb_ph/LS_mode_3.gif" style="max-width:40%; height:auto; margin-left:30px;"><br>
 <span style="margin-left:30px; font-size:smaller; color:gray;">
   Phonon eigenvectors in the low-spin phase
 </span>
