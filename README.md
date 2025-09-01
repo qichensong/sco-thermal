@@ -9,6 +9,14 @@ This repository contains ready-to-use **Python scripts** for comprehensive analy
 - Flexible, customizable plotting styles
 - Analysis across diverse experimental techniques
 
+<img src="./dftb_ph/LS_mode_3.gif" style="max-width:60%; height:auto; margin-left:30px;"><br>
+<span style="margin-left:30px; font-size:smaller; color:gray;">
+  Phonon eigenvectors in the low-spin phase
+</span>
+
+
+
+
 ## 📂 File Structure
 ```
 📂 sco-thermal/
@@ -39,7 +47,8 @@ This repository contains ready-to-use **Python scripts** for comprehensive analy
             🟢 **vanadium.py** ← Executable script for neutron scattering analysis for the reference sample
             📂 data/ ← Raw data
     📂 dftb_ph/
-        🟢 **get_inter_vs_intra_from_hessian.py** ← Executable script for density functional tight-binding (DFTB) analysis
+        🟢 **get_inter_vs_intra_from_hessian.py** ← Executable script for density functional tight-binding (DFTB) analysis: eigenvalues
+        🟢 **get_eigenvectors.py** ← Executable script for density functional tight-binding (DFTB) analysis: phonon eigenvectors visualized in movies
         📂 data/ ← Raw data
 ```
 
