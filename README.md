@@ -28,6 +28,7 @@ This repository contains ready-to-use **Python scripts** for comprehensive analy
         📂 data/ ← Raw data
     📂 fdtr/
         🟢 **plot_kappa.py**   ← Executable script for thermal conductivity analysis from frequency-domain thermoreflectance (FDTR)
+        📄 layered_ttm.pdf ← Modeling electron-phonon coupliing in FDTR 
         📂 data/  ← Raw data
     📂 ins/
         📂 Sample/
