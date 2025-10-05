@@ -290,7 +290,7 @@ for ikwd,keywd in enumerate(['LS','HS']):
     omega = np.sqrt(eigenvalues[:]*ifcunit/amu*ev2J/ang**2)/1e12/np.pi/2 
     cm2THz = 1/33.35641
     freq = omega/cm2THz
-    mdlist = [3,4]
+    mdlist = np.arange(3,11) # Change this index list to plot more phonon modes
     for imd in mdlist:
         if gengif == 1:
             fig = plt.figure(figsize=(10,10))
