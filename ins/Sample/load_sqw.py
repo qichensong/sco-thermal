@@ -147,7 +147,7 @@ sqw_instance = sqw(4.69,'data') # neutron wavelength and data directory
 sqw_instance.read_all_data([250,300,350,375,400])  # Read all files
 sqw_instance.plot_sqw()  # Plot S(q,w)
 # unit cell volume in Angstrom^3 at listed temperatures
-vol = np.array([2063.284144, 2074.812745, 2175.979671, 2178.346967, 2178.346967])
+vol = np.array([2063.852896, 2076.286627, 2177.235013, 2185.380192, 2185.380192])
 natom = 188
 sqw_instance.get_gdos(vol,natom)  # Calculate the integrated generalized density of states
 sqw_instance.plot_aqw()  # Plot weighted S(q,w), denoted as A(q,w)
