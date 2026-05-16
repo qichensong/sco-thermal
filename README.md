@@ -52,7 +52,7 @@ This repository contains ready-to-use **Python scripts** for comprehensive analy
         🟢 **get_eigenvectors.py** ← Executable script for density functional tight-binding (DFTB) analysis: phonon eigenvectors visualized in movies
         📂 data/ ← Raw data
     📂 dft/
-        📄 isolate_mol_DFT.htm ← DFT calculation (gas phase)
+        📄 isolate_mol_DFT.htm ← DFT calculations (gas phase)
 ```
 
 ## 🚀 Quickstart
