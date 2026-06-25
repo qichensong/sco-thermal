@@ -2,7 +2,7 @@
 
 Welcome!
 
-This repository contains ready-to-use **Python scripts** for comprehensive analysis of multiple experimental datasets collected using diverse experimental techniques for the paper [*Reversible regulation of thermal conductivity through spin-crossover transitions*](https://qichensong.github.io/). With a single command, you can reproduce all key statistical analyses and generate high-quality, publication-ready figures.
+This repository contains ready-to-use **Python scripts** for comprehensive analysis of multiple experimental datasets collected using diverse experimental techniques for the paper [*Reversible regulation of thermal conductivity through spin-crossover transitions*](https://pubs.acs.org/doi/10.1021/jacs.6c07632). With a single command, you can reproduce all key statistical analyses and generate high-quality, publication-ready figures.
 
 ## 🌟 Highlights
 - Raw data to high-quality figures 
